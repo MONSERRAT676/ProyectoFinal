@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bases de Datos Relacionales</title>
+   <style>
+    body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('https://certitec.eu/wp-content/uploads/2023/03/OOT.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333; /* Color neutral para combinar con los pasteles */
+    line-height: 1.6;
+}
+
+.header {
+    background: linear-gradient(to right, #a8edea, #fed6e3); /* Colores pastel suaves */
+    padding: 10px;
+    text-align: center;
+    color: #4A4A4A; /* Gris oscuro */
+    font-size: 2.00em; /* Tamaño más pequeño */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #D3BCC0; /* Línea decorativa */
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-section {
+    background: rgba(255, 240, 245, 0.9); /* Fondo pastel inicial */
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.5s, transform 0.3s;
+}
+
+.info-section:hover {
+    background: rgba(240, 255, 240, 0.9); /* Color pastel al pasar el mouse */
+    transform: scale(1.02);
+}
+
+.info-section h2 {
+    font-size: 1.8em;
+    color: #6A5ACD; /* Pastel púrpura para los títulos */
+    text-align: center;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.back-to-home {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #B2DFDB, #FFE0B2); /* Gradiente pastel */
+    color: #333; /* Color neutro */
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.back-to-home:hover {
+    background: linear-gradient(to right, #FFE0B2, #B2DFDB); /* Invertir gradiente */
+    transform: scale(1.05);
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background: #E0BBE4; /* Pastel morado claro */
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+   </style>
+</head>
+<body>
+    <header class="header">
+        Bases de Datos Relacionales
+    </header>
+
+    <main class="main-content">
+        <section class="info-section">
+            <h2>Definición de Bases de Datos Relacionales</h2>
+            <p>Las bases de datos relacionales organizan los datos en tablas. Son utilizadas para gestionar grandes cantidades de información. En este tipo de bases de datos, los datos están estructurados en filas y columnas.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>Características principales</h2>
+            <ul>
+                <li>Integridad referencial</li>
+                <li>Transacciones ACID</li>
+                <li>SQL (Structured Query Language)</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>¿Qué es una Base de Datos?</h2>
+            <p>Una base de datos es un sistema que permite almacenar, organizar y gestionar datos de manera estructurada. Las bases de datos relacionales, como MySQL, organizan la información en tablas con filas y columnas.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>Conexión a una Base de Datos con PHP</h2>
+            <p>Para conectar una aplicación PHP con una base de datos MySQL, usamos la función mysqli_connect(). Aquí tienes un ejemplo básico:</p>
+            <pre><code>
+<?php
+$servidor = "localhost";
+$usuario = "root";
+$password = "";
+$baseDatos = "educativa";
+
+// Conexión a la base de datos
+$conexion = new mysqli($servidor, $usuario, $password, $baseDatos);
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+echo "Conexión exitosa";
+?>
+            </code></pre>
+        </section>
+
+        <section class="info-section">
+            <h2>Ejemplo de Consulta de Datos</h2>
+            <p>Una vez conectados, podemos ejecutar consultas para obtener datos. Por ejemplo, para obtener una lista de usuarios registrados:</p>
+            <pre><code>
+<?php
+$sql = "SELECT * FROM usuarios";
+$resultado = $conexion->query($sql);
+
+if ($resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"] . " - Nombre: " . $fila["nombre"] . "<br>";
+    }
+} else {
+    echo "No se encontraron resultados.";
+}
+?>
+            </code></pre>
+        </section>
+
+        <section class="info-section">
+            <h2>Conexión y Formulario para Insertar Datos</h2>
+            <p>A continuación, se encuentra un ejemplo de un formulario para insertar un nuevo usuario en la base de datos, junto con la conexión a la base de datos:</p>
+            <pre><code>
+<?php
+$servidor = "localhost";
+$usuario = "root";
+$password = "";
+$baseDatos = "educativa";
+
+// Conexión a la base de datos
+$conexion = new mysqli($servidor, $usuario, $password, $baseDatos);
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+
+// Ejemplo de inserción de datos
+$sql = "INSERT INTO usuarios (nombre, email) VALUES ('Juan Pérez', 'juan@email.com')";
+if ($conexion->query($sql) === TRUE) {
+    echo "Nuevo registro creado exitosamente";
+} else {
+    echo "Error: " . $sql . "<br>" . $conexion->error;
+}
+?>
+            </code></pre>
+        </section>
+
+        <button class="back-to-home" onclick="location.href='index.html'">Ir al Inicio</button>
+    </main>
+
+    <footer class="footer">
+        © 2024 Bases de Datos Relacionales. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

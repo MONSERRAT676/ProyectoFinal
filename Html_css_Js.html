@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS y JavaScript</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('https://certitec.eu/wp-content/uploads/2023/03/OOT.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(to right, #ffb3ba, #ffdfba); /* Colores pastel cálidos */
+            padding: 10px;
+            text-align: center;
+            color: #4A4A4A; /* Gris oscuro */
+            font-size: 1.5em; /* Tamaño más pequeño */
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid #D3BCC0; /* Línea decorativa */
+        }
+
+        .main-content {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            background: rgba(255, 240, 245, 0.9); /* Fondo pastel inicial */
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.5s, transform 0.3s;
+        }
+
+        .info-section:hover {
+            background: rgba(240, 255, 240, 0.9); /* Color pastel al pasar el mouse */
+            transform: scale(1.02);
+        }
+
+        .info-section h2 {
+            font-size: 1.8em;
+            color: #6A5ACD; /* Pastel púrpura para los títulos */
+            text-align: center;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .back-to-home {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #B2DFDB, #FFE0B2); /* Gradiente pastel */
+            color: #333;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .back-to-home:hover {
+            background: linear-gradient(to right, #FFE0B2, #B2DFDB); /* Invertir gradiente */
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: #E0BBE4; /* Pastel morado claro */
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery img {
+            width: 150px;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        HTML, CSS y JavaScript
+    </header>
+
+    <main class="main-content">
+        <section class="info-section">
+            <h2>¿Qué es HTML, CSS y JavaScript?</h2>
+            <p>HTML, CSS y JavaScript son los pilares fundamentales del desarrollo web. Cada uno tiene un rol específico para crear y dar vida a las páginas web:</p>
+            <ul>
+                <li><strong>HTML:</strong> Lenguaje de marcado para estructurar el contenido de las páginas web.</li>
+                <li><strong>CSS:</strong> Lenguaje de estilo utilizado para darle diseño y formato a las páginas web.</li>
+                <li><strong>JavaScript:</strong> Lenguaje de programación que añade interactividad y dinamismo a las páginas.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>¿Qué hace cada tecnología?</h2>
+            <ul>
+                <li><strong>HTML:</strong> Define la estructura de la página mediante etiquetas como &lt;h1&gt;, &lt;p&gt;, &lt;div&gt;, entre otras.</li>
+                <li><strong>CSS:</strong> Permite estilizar el contenido con propiedades como colores, fuentes, márgenes y posiciones.</li>
+                <li><strong>JavaScript:</strong> Se utiliza para manejar eventos, validar formularios, actualizar contenido dinámicamente y más.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>Ejemplo básico de HTML</h2>
+            <pre><code>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi primera página</title>
+</head>
+<body>
+    <h1>Hola, mundo</h1>
+    <p>Este es un ejemplo básico de HTML.</p>
+</body>
+</html>
+            </code></pre>
+        </section>
+
+        <section class="info-section">
+            <h2>Ejemplo básico de CSS</h2>
+            <pre><code>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+h1 {
+    color: #1976D2;
+}
+            </code></pre>
+        </section>
+
+        <section class="info-section">
+            <h2>Ejemplo básico de JavaScript</h2>
+            <pre><code>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        alert("¡Hola, mundo!");
+    });
+</script>
+            </code></pre>
+        </section>
+
+        <section class="info-section">
+            <h2>Integración de HTML, CSS y JavaScript</h2>
+            <p>Estas tres tecnologías trabajan juntas para crear experiencias web completas:</p>
+            <pre><code>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página dinámica</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #6a82fb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a mi página</h1>
+    <button onclick="mostrarMensaje()">Haz clic aquí</button>
+    <script>
+        function mostrarMensaje() {
+            alert("¡Gracias por hacer clic!");
+        }
+    </script>
+</body>
+</html>
+            </code></pre>
+        </section>
+
+        <section class="info-section">
+            <h2>Formulario de Contacto</h2>
+            <p>En este ejemplo, crearemos un formulario básico con validación en JavaScript:</p>
+            <form id="contactForm" onsubmit="return validarFormulario()">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <br>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <input type="submit" value="Enviar">
+            </form>
+            <p id="mensaje"></p>
+            <script>
+                function validarFormulario() {
+                    const nombre = document.getElementById("nombre").value;
+                    const email = document.getElementById("email").value;
+                    if (nombre == "" || email == "") {
+                        document.getElementById("mensaje").innerText = "Por favor, completa todos los campos.";
+                        return false;
+                    } else {
+                        document.getElementById("mensaje").innerText = "Formulario enviado con éxito.";
+                        return true;
+                    }
+                }
+            </script>
+        </section>
+
+        <section class="info-section">
+            <h2>Interacción con el Mouse</h2>
+            <p>Este es un ejemplo de cómo cambiar el color de los elementos al pasar el mouse sobre ellos:</p>
+            <div id="caja" style="width: 200px; height: 200px; background-color: #FFB3BA;">
+                <p style="text-align: center; padding-top: 70px;">Pasa el mouse aquí</p>
+            </div>
+            <script>
+                const caja = document.getElementById("caja");
+                caja.addEventListener("mouseover", function() {
+                    caja.style.backgroundColor = "#FFDFBA";
+                });
+                caja.addEventListener("mouseout", function() {
+                    caja.style.backgroundColor = "#FFB3BA";
+                });
+            </script>
+        </section>
+
+        <section class="info-section">
+            <h2>Galería de Imágenes</h2>
+            <div class="gallery">
+                <img src="https://i.pinimg.com/736x/40/01/63/400163a04ec3c2109d3e4d9cfcebea49.jpg" alt="Imagen 1">
+                <img src="https://i.pinimg.com/474x/e9/bd/5a/e9bd5a2f894d3837e81bbcb6695e4b9c.jpg" alt="Imagen 2">
+                <img src="https://i.pinimg.com/736x/95/c2/97/95c297303ed10a41482ed4e557e4f198.jpg" alt="Imagen 3">
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2>Temporizador de Cuenta Regresiva</h2>
+            <p>Este temporizador cuenta los segundos hacia abajo:</p>
+            <div id="temporizador"></div>
+            <script>
+                let tiempo = 100; // Segundos
+                const temporizadorDiv = document.getElementById("temporizador");
+                
+                function cuentaRegresiva() {
+                    if (tiempo > 0) {
+                        tiempo--;
+                        temporizadorDiv.innerText = `Tiempo restante: ${tiempo} segundos`;
+                    } else {
+                        temporizadorDiv.innerText = "¡El tiempo ha terminado!";
+                    }
+                }
+                setInterval(cuentaRegresiva, 1000);
+            </script>
+        </section>
+
+        <button class="back-to-home" onclick="window.location.href='#'">Volver a inicio</button>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Desarrollado por Tu Nombre</p>
+    </footer>
+</body>
+</html>

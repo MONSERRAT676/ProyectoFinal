@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Ahorcado</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a2c2e1, #4f5d75); /* Colores de invierno: azules y grises fríos */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #a9cfe3; /* Color blanco azulado para el título */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+
+        #hangman-img {
+            width: 80%;
+            max-width: 350px;
+            height: auto;
+            margin: 20px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #wordDisplay {
+            font-size: 2.5em;
+            letter-spacing: 15px;
+            color: #d1e0e0; /* Gris claro frío */
+            margin-bottom: 20px;
+        }
+
+        #guessInput {
+            font-size: 1.5em;
+            padding: 10px;
+            width: 50px;
+            text-align: center;
+            border: 2px solid #b3c7d6; /* Gris azul claro */
+            border-radius: 5px;
+            background-color: #4f5d75; /* Gris oscuro azulado */
+            color: #d1e0e0;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #guessInput:focus {
+            background-color: #d1e0e0;
+            color: #4f5d75;
+            outline: none;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #506a8c; /* Azul metálico */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #6d8399; /* Azul más claro al pasar el ratón */
+            transform: scale(1.1);
+        }
+
+        #attempts {
+            font-size: 1.5em;
+            color: #a9cfe3; /* Gris claro azulado */
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #FFEB3B; /* Color cálido para resaltar mensajes */
+            margin-top: 20px;
+        }
+
+        #resetButton {
+            background-color: #3a5a6e;
+            margin-top: 20px;
+        }
+
+        #resetButton:hover {
+            background-color: #4a6b7d;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            #hangman-img {
+                width: 60%; 
+            }
+
+            #wordDisplay {
+                font-size: 2em;
+            }
+
+            #guessInput {
+                width: 45px;
+                font-size: 1.2em;
+            }
+
+            .button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            #attempts, .message {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            #hangman-img {
+                width: 50%; 
+            }
+
+            #wordDisplay {
+                font-size: 1.8em;
+            }
+
+            #guessInput {
+                width: 40px;
+                font-size: 1em;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            #attempts, .message {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego de Ahorcado</h1>
+    <div id="hangman">
+        <img id="hangman-img" src="images/hangman0.png" alt="Ahorcado">
+    </div>
+    <div id="wordDisplay"></div>
+    <input type="text" id="guessInput" maxlength="1">
+    <button id="guessButton" class="button">Adivinar</button>
+    <div id="attempts"></div>
+    <div id="message" class="message"></div>
+    <button id="resetButton" class="button">Reiniciar Juego</button>
+
+    <audio id="wrongSound" src="sounds/wrong.wav"></audio>
+    <audio id="correctSound" src="sounds/correct.wav"></audio>
+    
+
+   
+</body>
+
+
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+    const words = fetchWords();
+    let selectedWord = "";
+    let attemptsLeft = 6;
+    let guessedLetters = [];
+    let wordDisplay = document.getElementById("wordDisplay");
+    let attemptsDisplay = document.getElementById("attempts");
+    let messageDisplay = document.getElementById("message");
+    let guessInput = document.getElementById("guessInput");
+    let guessButton = document.getElementById("guessButton");
+    let resetButton = document.getElementById("resetButton");
+
+    // Sonidos
+    const wrongSound = document.getElementById("wrongSound");
+    const correctSound = document.getElementById("correctSound");
+
+    function fetchWords() {
+        // Simula una llamada a base de datos con un archivo JSON
+        return [
+            "html",
+            "css",
+            "javascript",
+            "elemento",
+            "dom",
+            "variable",
+            "funcion",
+            "clase"
+        ];
+    }
+
+    function startGame() {
+        selectedWord = words[Math.floor(Math.random() * words.length)];
+        guessedLetters = [];
+        attemptsLeft = 6;
+        wordDisplay.innerHTML = "_ ".repeat(selectedWord.length);
+        attemptsDisplay.innerHTML = `Intentos restantes: ${attemptsLeft}`;
+        messageDisplay.innerHTML = "";
+        guessInput.value = "";
+        guessInput.disabled = false;
+        guessButton.disabled = false;
+    }
+
+    function updateWordDisplay() {
+        let displayWord = "";
+        for (let i = 0; i < selectedWord.length; i++) {
+            if (guessedLetters.includes(selectedWord[i])) {
+                displayWord += selectedWord[i] + " ";
+            } else {
+                displayWord += "_ ";
+            }
+        }
+        wordDisplay.innerHTML = displayWord.trim();
+    }
+
+    function checkGameStatus() {
+        if (attemptsLeft <= 0) {
+            messageDisplay.innerHTML = `¡Perdiste! La palabra era "${selectedWord}"`;
+            guessInput.disabled = true;
+            guessButton.disabled = true;
+        } else if (!wordDisplay.innerHTML.includes("_")) {
+            messageDisplay.innerHTML = "¡Ganaste!";
+            guessInput.disabled = true;
+            guessButton.disabled = true;
+        }
+    }
+
+    function guessLetter() {
+        const letter = guessInput.value.toLowerCase();
+        if (letter && !guessedLetters.includes(letter)) {
+            guessedLetters.push(letter);
+            if (!selectedWord.includes(letter)) {
+                attemptsLeft--;
+                wrongSound.play(); // Reproduce el sonido incorrecto
+            } else {
+                correctSound.play(); // Reproduce el sonido correcto
+            }
+            updateWordDisplay();
+            attemptsDisplay.innerHTML = `Intentos restantes: ${attemptsLeft}`;
+            checkGameStatus();
+        }
+        guessInput.value = "";
+        guessInput.focus();
+    }
+
+    guessButton.addEventListener("click", guessLetter);
+
+    resetButton.addEventListener("click", startGame);
+
+    startGame();
+});
+
+
+      </script>
+</html>

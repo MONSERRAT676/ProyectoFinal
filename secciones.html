@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación y Programación</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://certitec.eu/wp-content/uploads/2023/03/OOT.jpg'); /* Ruta de la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        /* Encabezado */
+        header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+            color: #1976D2; /* Color azul */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Efecto de desvanecimiento */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Estilos del contenedor principal */
+        main {
+            padding: 40px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 900px; /* Ancho máximo para centrar el contenido */
+            background: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        h1, h2, h3 {
+            color: #6a82fb; /* Color azul claro para los títulos */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #444; /* Color gris oscuro para los párrafos */
+            margin-bottom: 30px;
+        }
+
+        .seccion-contenido {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+            color: #444;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #1976D2;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #1565C0;
+        }
+
+        .tema {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: none; /* Eliminamos las sombras */
+        }
+
+        .tema h3 {
+            color: #1976D2;
+        }
+
+        nav {
+            margin: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #1976D2;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educación y Programación</h1>
+        <nav>
+            <a href="#intro">Introducción a la Programación</a>
+            <a href="#db">Bases de Datos Relacionales</a>
+            <a href="#web">HTML, CSS y JavaScript</a>
+            <a href="#game">Juego: Ahorcado</a>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Sección: Introducción a la Programación -->
+        <section id="intro">
+            <div class="tema">
+                <h2>Introducción a la Programación</h2>
+                <p>La programación es el proceso mediante el cual se le da instrucciones a una computadora para realizar tareas específicas...</p>
+                <h3>Tipos de Lenguajes de Programación</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>Java</li>
+                    <li>C#</li>
+                </ul>
+                <h3>Conceptos Clave</h3>
+                <ul>
+                    <li><strong>Clases y objetos:</strong> Una clase es una plantilla de un objeto.</li>
+                    <li><strong>Herencia:</strong> Permite a una clase heredar atributos y métodos de otra.</li>
+                    <li><strong>Encapsulación:</strong> Protección de datos mediante el uso de métodos para acceder a ellos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección: Bases de Datos Relacionales -->
+        <section id="db">
+            <div class="tema">
+                <h2>Bases de Datos Relacionales</h2>
+                <p>Las bases de datos relacionales organizan los datos en tablas. Son utilizadas para gestionar grandes cantidades de información.</p>
+                <h3>Ejemplo de conexión a MySQL con PHP</h3>
+                <pre><code>
+&lt;?php
+$conexion = new mysqli("localhost", "usuario", "contraseña", "base_datos");
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+echo "Conexión exitosa";
+?&gt;
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Sección: HTML, CSS y JavaScript -->
+        <section id="web">
+            <div class="tema">
+                <h2>HTML, CSS y JavaScript</h2>
+                <h3>Ejemplo básico</h3>
+                <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Ejemplo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola, Mundo&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+                <h3>CSS Básico</h3>
+                <pre><code>
+body {
+    background-color: #f0f0f0;
+    font-family: Arial;
+}
+h1 {
+    color: #6a82fb;
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- Sección: Juego Ahorcado -->
+        <section id="game">
+            <div class="tema">
+                <h2>Juego: Ahorcado</h2>
+                <p>¡Bienvenido al juego del ahorcado!</p>
+                <a href="juego.html">
+                    <button>Empezar Juego</button>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Educación y Programación</p>
+    </footer>
+</body>
+</html>

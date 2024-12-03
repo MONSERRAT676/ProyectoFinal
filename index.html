@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Programación y Bases de Datos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap">
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s ease-in;
+            background-image: url("https://th.bing.com/th/id/R.ee91f95ea471266d777c4a6d47e70bab?rik=GMsG4za%2fhw7gxg&pid=ImgRaw&r=0");
+        }
+
+        header {
+            background: linear-gradient(90deg, #6a82fb, #fc5c7d);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 4rem;
+            margin: 0;
+            color: white;
+        }
+
+        main {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        main h2, main p {
+            color: white;
+        }
+
+        .secciones-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        .seccion {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0.95;
+            text-align: center;
+        }
+
+        .seccion:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            opacity: 1;
+        }
+
+        .seccion a {
+            color: #6a82fb;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .seccion a:hover {
+            color: #fc5c7d;
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #6a82fb;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #fc5c7d;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educación en Programación y Bases de Datos</h1>
+    </header>
+    <main>
+        <h2>Bienvenido</h2>
+        <p>Selecciona una sección para aprender más sobre programación y bases de datos.</p>
+        <div class="secciones-container">
+            <div class="seccion">
+                <a href="introduccion.html">Introducción a la Programación</a>
+            </div>
+            <div class="seccion">
+                <a href="datos.html">Bases de Datos Relacionales</a>
+            </div>
+            <div class="seccion">
+                <a href="Html_css_Js.html">HTML, CSS y JavaScript</a>
+            </div>
+            <div class="seccion">
+                <a href="ahorcado.html">Juego: Ahorcado</a>
+
+            </div>
+        </div>
+
+    
+    </main>
+    <footer>
+        <p>&copy; 2024 Programación y Bases de Datos | Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
